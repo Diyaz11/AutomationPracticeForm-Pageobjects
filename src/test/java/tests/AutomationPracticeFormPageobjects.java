@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
 import java.io.File;
 
@@ -27,23 +28,25 @@ public class AutomationPracticeFormPageobjects {
         open("/automation-practice-form");
         $(".main-header").shouldHave(text("Practice Form"));
 
-//Проверка ввода значений и клика кнопок
-        $("#firstName").setValue("Mick");
-        $("#lastName").setValue("Ivanov");
-        $("#userEmail").setValue("ivanov@company.com");
-        $("#gender-radio-1").parent().click();
-        $("#userNumber").setValue("89995554411");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $(".react-datepicker__month-select").selectOption(3);
-        $(".react-datepicker__month-select").click();
-        $(".react-datepicker__year-select").click();
-        $(".react-datepicker__year-select").selectOption("1990");
-        $(".react-datepicker__year-select").click();
-        $(".react-datepicker__day--019").click();
-        $("#subjectsInput").setValue("Arts").pressEnter();
-        $("#hobbies-checkbox-1").parent().click();
-        $("#uploadPicture").uploadFile(new File("test.jpg")); //не уверен, что так правильно, добавил jgp в папку с проектом и оттуда беру файл
+//Проверки
+        new RegistrationPage().setFirstName("Mick");
+        //$("#firstName").setValue("Mick");
+        new RegistrationPage().setLastName("Ivanov");
+        new RegistrationPage().setUserEmail("ivanov@company.com");
+        new RegistrationPage().clickGenderRadio();
+        new RegistrationPage().setUserNumber("89995554411");
+        new RegistrationPage().clickdateOfBirth();
+        new RegistrationPage().clickMonth();
+        new RegistrationPage().selectMonth(3);
+        new RegistrationPage().clickMonth();
+        new RegistrationPage().clickyear();
+        new RegistrationPage().selectYear("1990");
+        new RegistrationPage().clickday();
+        new RegistrationPage().subjectsInput("Arts");
+        new RegistrationPage().hobbies();
+        //("#subjectsInput").setValue("Arts").pressEnter();
+        //$("#hobbies-checkbox-1").parent().click();
+        $("#uploadPicture").uploadFile(new File("test.jpg"));
         $("#currentAddress").setValue("some address");
         $("#state").scrollTo().click();
         $("#state").$(byText("Rajasthan")).click();
