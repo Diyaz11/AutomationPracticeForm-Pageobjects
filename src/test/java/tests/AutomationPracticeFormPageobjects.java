@@ -30,7 +30,6 @@ public class AutomationPracticeFormPageobjects {
 
 //Проверки
         new RegistrationPage().setFirstName("Mick");
-        //$("#firstName").setValue("Mick");
         new RegistrationPage().setLastName("Ivanov");
         new RegistrationPage().setUserEmail("ivanov@company.com");
         new RegistrationPage().clickGenderRadio();
@@ -39,35 +38,32 @@ public class AutomationPracticeFormPageobjects {
         new RegistrationPage().clickMonth();
         new RegistrationPage().selectMonth(3);
         new RegistrationPage().clickMonth();
-        new RegistrationPage().clickyear();
+        new RegistrationPage().clickYear();
         new RegistrationPage().selectYear("1990");
-        new RegistrationPage().clickday();
+        new RegistrationPage().clickDay();
         new RegistrationPage().subjectsInput("Arts");
         new RegistrationPage().hobbies();
-        //("#subjectsInput").setValue("Arts").pressEnter();
-        //$("#hobbies-checkbox-1").parent().click();
-        $("#uploadPicture").uploadFile(new File("test.jpg"));
-        $("#currentAddress").setValue("some address");
-        $("#state").scrollTo().click();
-        $("#state").$(byText("Rajasthan")).click();
-        $("#city").scrollTo().click();
-        $("#city").$(byText("Jaiselmer")).click();
-        $("#submit").click();
-//Добавил проверку после заполенения форм, что все значения есть в таблице
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(
-                text("Mick Ivanov"),
-                text("ivanov@company.com"),
-                text("Male"),
-                text("8999555441"),
-                text("9 April,1990"),
-                text("Arts"),
-                text("Sports"),
-                text("test.jpg"),
-                text("some address"),
-                text("Rajasthan Jaiselmer")
-        );
-        $("#closeLargeModal").click();
+        new RegistrationPage().uploadFilePicture("test.jpg");
+        new RegistrationPage().setСurrentAddress("some address");
+        new RegistrationPage().clickState();
+        new RegistrationPage().formState("Rajasthan");
+        new RegistrationPage().clickСity();
+        new RegistrationPage().formCity("Jaiselmer");
+        new RegistrationPage().clickSubmitButton();
+
+        new RegistrationPage().checkHeaderResultTable("Thanks for submitting the form");
+        new RegistrationPage().checkForm("Student Name", "Mick Ivanov");
+        new RegistrationPage().checkForm("Student Email", "ivanov@company.com");
+        //new RegistrationPage().checkForm("Gender", "Male");
+        //new RegistrationPage().checkForm("Mobile", "8999555441");
+        //new RegistrationPage().checkForm("Date of Birth", "9 April,1990");
+        //new RegistrationPage().checkForm("Subjects", "Arts");
+        //new RegistrationPage().checkForm("Hobbies", "Sports");
+        //new RegistrationPage().checkForm("Picture", "test.jpg");
+        //new RegistrationPage().checkForm("Address", "some address");
+        //new RegistrationPage().checkForm("State and City", "Rajasthan Jaiselmer");
+        //new RegistrationPage().clickCloseTable();
+
 
     }
 
