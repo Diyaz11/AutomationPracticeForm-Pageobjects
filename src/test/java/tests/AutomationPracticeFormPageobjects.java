@@ -52,17 +52,18 @@ public class AutomationPracticeFormPageobjects {
         new RegistrationPage().clickSubmitButton();
 
         new RegistrationPage().checkHeaderResultTable("Thanks for submitting the form");
+
         new RegistrationPage().checkForm("Student Name", "Mick Ivanov");
         new RegistrationPage().checkForm("Student Email", "ivanov@company.com");
-        //new RegistrationPage().checkForm("Gender", "Male");
-        //new RegistrationPage().checkForm("Mobile", "8999555441");
-        //new RegistrationPage().checkForm("Date of Birth", "9 April,1990");
-        //new RegistrationPage().checkForm("Subjects", "Arts");
-        //new RegistrationPage().checkForm("Hobbies", "Sports");
-        //new RegistrationPage().checkForm("Picture", "test.jpg");
-        //new RegistrationPage().checkForm("Address", "some address");
-        //new RegistrationPage().checkForm("State and City", "Rajasthan Jaiselmer");
-        //new RegistrationPage().clickCloseTable();
+        new RegistrationPage().checkForm("Gender", "Male");
+        new RegistrationPage().checkForm("Mobile", "8999555441");
+        new RegistrationPage().checkForm("Date of Birth", "9 April,1990");
+        new RegistrationPage().checkForm("Subjects", "Arts");
+        new RegistrationPage().checkForm("Hobbies", "Sports");
+        new RegistrationPage().checkForm("Picture", "test.jpg");
+        new RegistrationPage().checkForm("Address", "some address");
+        new RegistrationPage().checkForm("State and City", "Rajasthan Jaiselmer");
+        new RegistrationPage().clickCloseTable();
 
 
     }

@@ -31,8 +31,8 @@ public class RegistrationPage {
 
     //Проверка формы
     SelenideElement headerResultTable= $("#example-modal-sizes-title-lg");
-    SelenideElement resultTable= $("#example-modal-sizes-title-lg");
-    SelenideElement CloseTable= $("#closeLargeModag");
+    SelenideElement resultTable= $(".table-responsive");
+    SelenideElement CloseTable= $("#closeLargeModal");
 
 
 
