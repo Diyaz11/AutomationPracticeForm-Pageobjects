@@ -8,171 +8,196 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
     //locators
-    //$("#firstName")
-    SelenideElement firstNameInput = $("#firstName");
-    SelenideElement lastNameInput = $("#lastName");
-    SelenideElement userEmailInput = $("#userEmail");
-    SelenideElement genderRadioInput = $("#gender-radio-1");
-    SelenideElement userNumberInput = $("#userNumber");
-    SelenideElement clickDateOfBirthInput = $("#dateOfBirthInput");
-    SelenideElement datePickerMonth = $(".react-datepicker__month-select");
-    SelenideElement datePickerYear = $(".react-datepicker__year-select");
-    SelenideElement datePickerDay = $(".react-datepicker__day--019");
-    SelenideElement PressSubjectsInput = $("#subjectsInput");
-    SelenideElement HobbiesCheckbox = $("#hobbies-checkbox-1");
-    SelenideElement uploadPictureInput = $("#uploadPicture");
-    SelenideElement currentAddressInput = $("#currentAddress");
-    SelenideElement stateInput = $("#state");
-    SelenideElement cityInput = $("#city");
-    SelenideElement submitButton= $("#submit");
-
-    //Проверка формы
-    SelenideElement headerResultTable= $("#example-modal-sizes-title-lg");
-    SelenideElement resultTable= $(".table-responsive");
-    SelenideElement CloseTable= $("#closeLargeModal");
-
-
-
-
+    private SelenideElement
+            headerTitle = $(".main-header"),
+            firstNameInput = $("#firstName"),
+            lastNameInput = $("#lastName"),
+            userEmailInput = $("#userEmail"),
+            genderRadioInput = $("#gender-radio-1"),
+            userNumberInput = $("#userNumber"),
+            clickDateOfBirthInput = $("#dateOfBirthInput"),
+            datePickerMonth = $(".react-datepicker__month-select"),
+            datePickerYear = $(".react-datepicker__year-select"),
+            datePickerDay = $(".react-datepicker__day--019"),
+            PressSubjectsInput = $("#subjectsInput"),
+            HobbiesCheckbox = $("#hobbies-checkbox-1"),
+            uploadPictureInput = $("#uploadPicture"),
+            currentAddressInput = $("#currentAddress"),
+            stateInput = $("#state"),
+            cityInput = $("#city"),
+            submitButton = $("#submit"),
+            headerResultTable = $("#example-modal-sizes-title-lg"), //Проверка формы
+            resultTable = $(".table-responsive"),
+            CloseTable = $("#closeLargeModal");
 
 
     //actions
     //Описание действий с селектором
-    public void setFirstName(String firstName) {
+    public RegistrationPage openPage() {
+        open("/automation-practice-form");
+        headerTitle.shouldHave(text("Practice Form"));
+        return this;
+    }
+    public RegistrationPage setFirstName(String firstName) {
 
         firstNameInput.setValue(firstName);
+        return this;
     }
 
-    public void setLastName(String lastName) {
+    public RegistrationPage setLastName(String lastName) {
 
         lastNameInput.setValue(lastName);
-
+        return this;
     }
 
-    public void setUserEmail(String userEmail) {
+    public RegistrationPage setUserEmail(String userEmail) {
 
         userEmailInput.setValue(userEmail);
+        return this;
     }
 
     // для клика по джендеру
-    public void clickGenderRadio() {
+    public RegistrationPage clickGenderRadio() {
 
         genderRadioInput.parent().click();
+        return this;
     }
 
-    public void setUserNumber(String userNumber) {
+    public RegistrationPage setUserNumber(String userNumber) {
 
         userNumberInput.setValue(userNumber);
+        return this;
     }
 
     // для клика по календарю
-    public void clickdateOfBirth() {
+    public RegistrationPage clickdateOfBirth() {
 
         clickDateOfBirthInput.click();
+        return this;
     }
 
     // для клика по месяцу в календаре
-    public void clickMonth() {
+    public RegistrationPage clickMonth() {
 
         datePickerMonth.click();
+        return this;
     }
 
     // для выбора месяца
-    public void selectMonth(int i) {
+    public RegistrationPage selectMonth(int i) {
 
         datePickerMonth.selectOption(i);
+        return this;
     }
 
     // для клика по году в календаре
-    public void clickYear() {
+    public RegistrationPage clickYear() {
 
         datePickerYear.click();
+        return this;
     }
 
     // для выбора года
-    public void selectYear(String text) {
+    public RegistrationPage selectYear(String text) {
 
         datePickerYear.selectOption(text);
+        return this;
     }
 
     // для клика по дню в календаре
-    public void clickDay() {
+    public RegistrationPage clickDay() {
 
         datePickerDay.click();
+        return this;
     }
 
     //задать значение в графе subjects
-    public void subjectsInput(String subjectsInput) {
+    public RegistrationPage subjectsInput(String subjectsInput) {
 
         PressSubjectsInput.setValue(subjectsInput).pressEnter();
+        return this;
     }
 
     // для чек-бокса хобби
-    public void hobbies() {
+    public RegistrationPage hobbies() {
 
         HobbiesCheckbox.parent().click();
+        return this;
     }
 
     //загрузка файла
-    public void uploadFilePicture(String fileName) {
+    public RegistrationPage uploadFilePicture(String fileName) {
 
         uploadPictureInput.uploadFromClasspath(fileName);
+        return this;
     }
 
     //Заполнить адрес
-    public void setСurrentAddress(String currentAddress) {
+    public RegistrationPage setСurrentAddress(String currentAddress) {
 
         currentAddressInput.setValue(currentAddress);
+        return this;
     }
 
     //нажать на всплывающий список штатов
-    public void clickState() {
+    public RegistrationPage clickState() {
 
         stateInput.scrollTo().click();
+        return this;
     }
 
     //найти тескт со штатом и кликнуть
-    public void formState(String fieldState) {
+    public RegistrationPage formState(String fieldState) {
 
         stateInput.$(byText(fieldState)).click();
+        return this;
     }
 
     //нажать на всплывающий городов
-    public void clickСity() {
+    public RegistrationPage clickСity() {
 
         cityInput.scrollTo().click();
+        return this;
     }
 
     //найти тескт с городом и кликнуть
-    public void formCity(String fieldCity) {
+    public RegistrationPage formCity(String fieldCity) {
 
         cityInput.$(byText(fieldCity)).click();
+        return this;
     }
 
     //нажать на батон сабмит
-    public void clickSubmitButton() {
+    public RegistrationPage clickSubmitButton() {
 
         submitButton.click();
+        return this;
     }
+
     //проверить, что есть сообщение в заголовке
-    public void checkHeaderResultTable(String headerText) {
+    public RegistrationPage checkHeaderResultTable(String headerText) {
 
         headerResultTable.shouldHave(text(headerText));
+        return this;
     }
+
     //проверка таблицы значений
-    public void checkForm(String fieldName, String value) {
+    public RegistrationPage checkForm(String fieldName, String value) {
 
         resultTable.$(byText(fieldName))
                 .parent().shouldHave(text(value));
-
+        return this;
     }
+
     //нажать на батон закрыть
-    public void clickCloseTable() {
+    public RegistrationPage clickCloseTable() {
 
         CloseTable.click();
+        return this;
     }
 
 }

@@ -15,6 +15,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class AutomationPracticeFormPageobjects {
+    RegistrationPage registrationPage = new RegistrationPage();
+    String firstName = "Mick";
 
     @BeforeAll
     static void beforeAll() {
@@ -25,45 +27,42 @@ public class AutomationPracticeFormPageobjects {
 
     @Test
     void successFillTest() {
-        open("/automation-practice-form");
-        $(".main-header").shouldHave(text("Practice Form"));
+        registrationPage.openPage()
+                .setFirstName(firstName)
+                .setLastName("Ivanov")
+                .setUserEmail("ivanov@company.com")
+                .clickGenderRadio()
+                .setUserNumber("89995554411")
+                .clickdateOfBirth()
+                .clickMonth()
+                .selectMonth(3)
+                .clickMonth()
+                .clickYear()
+                .selectYear("1990")
+                .clickDay()
+                .subjectsInput("Arts")
+                .hobbies()
+                .uploadFilePicture("test.jpg")
+                .setСurrentAddress("some address")
+                .clickState()
+                .formState("Rajasthan")
+                .clickСity()
+                .formCity("Jaiselmer")
+                .clickSubmitButton()
 
-//Проверки
-        new RegistrationPage().setFirstName("Mick");
-        new RegistrationPage().setLastName("Ivanov");
-        new RegistrationPage().setUserEmail("ivanov@company.com");
-        new RegistrationPage().clickGenderRadio();
-        new RegistrationPage().setUserNumber("89995554411");
-        new RegistrationPage().clickdateOfBirth();
-        new RegistrationPage().clickMonth();
-        new RegistrationPage().selectMonth(3);
-        new RegistrationPage().clickMonth();
-        new RegistrationPage().clickYear();
-        new RegistrationPage().selectYear("1990");
-        new RegistrationPage().clickDay();
-        new RegistrationPage().subjectsInput("Arts");
-        new RegistrationPage().hobbies();
-        new RegistrationPage().uploadFilePicture("test.jpg");
-        new RegistrationPage().setСurrentAddress("some address");
-        new RegistrationPage().clickState();
-        new RegistrationPage().formState("Rajasthan");
-        new RegistrationPage().clickСity();
-        new RegistrationPage().formCity("Jaiselmer");
-        new RegistrationPage().clickSubmitButton();
+                .checkHeaderResultTable("Thanks for submitting the form")
 
-        new RegistrationPage().checkHeaderResultTable("Thanks for submitting the form");
-
-        new RegistrationPage().checkForm("Student Name", "Mick Ivanov");
-        new RegistrationPage().checkForm("Student Email", "ivanov@company.com");
-        new RegistrationPage().checkForm("Gender", "Male");
-        new RegistrationPage().checkForm("Mobile", "8999555441");
-        new RegistrationPage().checkForm("Date of Birth", "9 April,1990");
-        new RegistrationPage().checkForm("Subjects", "Arts");
-        new RegistrationPage().checkForm("Hobbies", "Sports");
-        new RegistrationPage().checkForm("Picture", "test.jpg");
-        new RegistrationPage().checkForm("Address", "some address");
-        new RegistrationPage().checkForm("State and City", "Rajasthan Jaiselmer");
-        new RegistrationPage().clickCloseTable();
+                .checkForm("Student Name", firstName + " Ivanov")
+                .checkForm("Student Email", "ivanov@company.com")
+                .checkForm("Gender", "Male")
+                .checkForm("Mobile", "8999555441")
+                .checkForm("Date of Birth", "9 April,1990")
+                .checkForm("Subjects", "Arts")
+                .checkForm("Hobbies", "Sports")
+                .checkForm("Picture", "test.jpg")
+                .checkForm("Address", "some address")
+                .checkForm("State and City", "Rajasthan Jaiselmer")
+                .clickCloseTable();
 
 
     }
